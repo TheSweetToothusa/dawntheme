@@ -1,0 +1,155 @@
+{
+  "sections": {
+    "sweet-tooth-hero": {
+      "type": "sweet-tooth-hero",
+      "settings": {
+        "background_type": "image",
+        "headline": "The Gift They'll Actually Keep.",
+        "subheadline": "Premium kosher chocolate gift baskets, handcrafted in Miami since 1979",
+        "primary_cta_text": "Build Your Basket",
+        "secondary_cta_text": "Shop Gift Baskets"
+      }
+    },
+    "sweet-tooth-social-proof": {
+      "type": "sweet-tooth-social-proof",
+      "blocks": {
+        "proof-1": {
+          "type": "proof_item",
+          "settings": {
+            "text": "10,000+ Orders Shipped"
+          }
+        },
+        "proof-2": {
+          "type": "proof_item",
+          "settings": {
+            "text": "1,216 Five-Star Reviews"
+          }
+        },
+        "proof-3": {
+          "type": "proof_item",
+          "settings": {
+            "text": "Best of Aventura 2025"
+          }
+        },
+        "proof-4": {
+          "type": "proof_item",
+          "settings": {
+            "text": "KM Kosher Certified"
+          }
+        },
+        "proof-5": {
+          "type": "proof_item",
+          "settings": {
+            "text": "Ships Nationwide"
+          }
+        }
+      },
+      "block_order": ["proof-1", "proof-2", "proof-3", "proof-4", "proof-5"],
+      "settings": {
+        "style": "ticker"
+      }
+    },
+    "sweet-tooth-quick-start": {
+      "type": "sweet-tooth-quick-start",
+      "blocks": {
+        "card-1": {
+          "type": "occasion_card",
+          "settings": {
+            "icon_type": "emoji",
+            "emoji": "🕊️",
+            "title": "Sympathy & Shiva",
+            "background_color": "#F5F5F7"
+          }
+        },
+        "card-2": {
+          "type": "occasion_card",
+          "settings": {
+            "icon_type": "emoji",
+            "emoji": "💼",
+            "title": "Corporate & Thank You",
+            "background_color": "#F5F5F7"
+          }
+        },
+        "card-3": {
+          "type": "occasion_card",
+          "settings": {
+            "icon_type": "emoji",
+            "emoji": "🔥",
+            "title": "Dubai Chocolate",
+            "background_color": "#FCE4EC"
+          }
+        },
+        "card-4": {
+          "type": "occasion_card",
+          "settings": {
+            "icon_type": "emoji",
+            "emoji": "🎁",
+            "title": "View All Occasions",
+            "background_color": "#F5F5F7"
+          }
+        }
+      },
+      "block_order": ["card-1", "card-2", "card-3", "card-4"],
+      "settings": {
+        "heading": "Shop by Intent",
+        "subheading": "Find the perfect gift for any occasion"
+      }
+    },
+    "sweet-tooth-viral": {
+      "type": "sweet-tooth-viral",
+      "settings": {
+        "heading": "As Seen on Your Feed",
+        "subheading": "Our most-loved treats going viral right now"
+      }
+    },
+    "sweet-tooth-how-it-works": {
+      "type": "sweet-tooth-how-it-works",
+      "settings": {
+        "heading": "How It Works",
+        "tagline": "Your perfect gift in 3 simple steps",
+        "step_1_emoji": "🎯",
+        "step_1_title": "Choose Your Occasion",
+        "step_1_description": "Birthday, sympathy, corporate, or any reason to celebrate",
+        "step_2_emoji": "📦",
+        "step_2_title": "Pick Your Size",
+        "step_2_description": "From personal treats to office-sized showstoppers",
+        "step_3_emoji": "✨",
+        "step_3_title": "Personalize It",
+        "step_3_description": "Add a message, extras, and we'll handle the rest",
+        "cta_text": "Start Building"
+      }
+    },
+    "sweet-tooth-heritage": {
+      "type": "sweet-tooth-heritage",
+      "settings": {
+        "heading": "46 Years of Sweet Memories",
+        "body": "Since 1979, The Sweet Tooth has been Miami's go-to for handcrafted chocolate gifts. What started as a small family shop in Aventura has grown into a beloved tradition—shipping premium kosher treats nationwide while keeping that homemade quality in every piece.",
+        "stat_1": "46 Years",
+        "stat_1_label": "Family-Owned",
+        "stat_2": "10K+",
+        "stat_2_label": "Happy Customers",
+        "stat_3": "KM",
+        "stat_3_label": "Kosher Certified",
+        "cta_text": "Our Story"
+      }
+    },
+    "sweet-tooth-final-cta": {
+      "type": "sweet-tooth-final-cta",
+      "settings": {
+        "heading": "Ready to Make Someone's Day?",
+        "subheading": "Build your perfect basket in minutes",
+        "cta_text": "Build Your Basket",
+        "secondary_text": "Or call us: (305) 931-2323"
+      }
+    }
+  },
+  "order": [
+    "sweet-tooth-hero",
+    "sweet-tooth-social-proof",
+    "sweet-tooth-quick-start",
+    "sweet-tooth-viral",
+    "sweet-tooth-how-it-works",
+    "sweet-tooth-heritage",
+    "sweet-tooth-final-cta"
+  ]
+}

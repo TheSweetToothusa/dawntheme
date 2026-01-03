@@ -1,0 +1,512 @@
+{% comment %}
+  THE SWEET TOOTH - BASKET BUILDER PAGE TEMPLATE
+  Assign to: /pages/build-a-basket
+{% endcomment %}
+
+{{ 'sweet-tooth-basket-builder.css' | asset_url | stylesheet_tag }}
+
+<div class="st-builder-container">
+    <div id="app">
+        <!-- STEP 1: Choose Occasion -->
+        <div id="step-occasions" class="section active">
+            <h2>What's the Occasion?</h2>
+            <p class="subtitle">Choose what brings you here today</p>
+            
+            <div class="occasion-grid">
+                <div class="occasion-card" onclick="selectOccasion('Just Because')">
+                    <div class="icon">🎁</div>
+                    <h3>Just Because</h3>
+                </div>
+                <div class="occasion-card" onclick="selectOccasion('Birthday')">
+                    <div class="icon">🎂</div>
+                    <h3>Birthday</h3>
+                </div>
+                <div class="occasion-card" onclick="selectOccasion('Sympathy')">
+                    <div class="icon">🕊️</div>
+                    <h3>Sympathy/Shiva</h3>
+                </div>
+                <div class="occasion-card" onclick="selectOccasion('Baby')">
+                    <div class="icon">👶</div>
+                    <h3>Baby</h3>
+                </div>
+                <div class="occasion-card" onclick="selectOccasion('Thank You')">
+                    <div class="icon">🙏</div>
+                    <h3>Thank You</h3>
+                </div>
+                <div class="occasion-card" onclick="selectOccasion('Get Well')">
+                    <div class="icon">💐</div>
+                    <h3>Get Well</h3>
+                </div>
+                <div class="occasion-card" onclick="selectOccasion('Congratulations')">
+                    <div class="icon">🎉</div>
+                    <h3>Congratulations</h3>
+                </div>
+                <div class="occasion-card" onclick="selectOccasion('Anniversary')">
+                    <div class="icon">💑</div>
+                    <h3>Anniversary</h3>
+                </div>
+                <div class="occasion-card" onclick="selectOccasion('Housewarming')">
+                    <div class="icon">🏡</div>
+                    <h3>Housewarming</h3>
+                </div>
+                <div class="occasion-card" onclick="selectOccasion('Graduation')">
+                    <div class="icon">🎓</div>
+                    <h3>Graduation</h3>
+                </div>
+                <div class="occasion-card" onclick="selectOccasion('College')">
+                    <div class="icon">📚</div>
+                    <h3>College Acceptance</h3>
+                </div>
+                <div class="occasion-card" onclick="selectOccasion('Teacher Appreciation')">
+                    <div class="icon">🍎</div>
+                    <h3>Teacher Appreciation</h3>
+                </div>
+                <div class="occasion-card" onclick="selectOccasion('Generic')">
+                    <div class="icon">✍️</div>
+                    <h3>Create My Own</h3>
+                </div>
+            </div>
+        </div>
+        
+        <!-- STEP 2: Choose Basket Size -->
+        <div id="step-size" class="section">
+            <h2>Choose Your Basket Size</h2>
+            <p class="subtitle">Select the perfect size for your occasion</p>
+            
+            <div class="info-banner">
+                <p><strong>🍫 All baskets include a mix of milk, dark, and white chocolate.</strong> Need vegan/parve or have dietary restrictions? Add your request in "Special Instructions" after selecting your basket.</p>
+            </div>
+            
+            <div class="basket-grid">
+                <div class="basket-card" onclick="selectBasket('medium-round', 'Medium Round', 40, 89)">
+                    <img src="https://cdn.shopify.com/s/files/1/0559/8498/0141/files/medium_round_basket.png?v=1767201403" alt="Medium Round Basket" class="basket-image">
+                    <div class="basket-content">
+                        <div class="basket-header">
+                            <div class="basket-name">Medium Round</div>
+                            <div class="basket-price">$89</div>
+                        </div>
+                        <div class="serving-pill">Serves 10-15 people</div>
+                        <div class="basket-details">40 pieces · 12" Round Basket</div>
+                    </div>
+                </div>
+                
+                <div class="basket-card" onclick="selectBasket('large-oval', 'Large Oval', 60, 129)">
+                    <div class="popular-badge-overlay">Most Popular</div>
+                    <img src="https://cdn.shopify.com/s/files/1/0559/8498/0141/files/Large_Oval_Just_because_basket.png?v=1767199772" alt="Large Oval Basket" class="basket-image">
+                    <div class="basket-content">
+                        <div class="basket-header">
+                            <div class="basket-name">Large Oval</div>
+                            <div class="basket-price">$129</div>
+                        </div>
+                        <div class="serving-pill">Serves 15-25 people</div>
+                        <div class="basket-details">60 pieces · 16" Oval Basket</div>
+                    </div>
+                </div>
+                
+                <div class="basket-card" onclick="selectBasket('extra-large', 'Extra Large', 99, 179)">
+                    <img src="https://cdn.shopify.com/s/files/1/0559/8498/0141/files/Large_Kosher_Chocolate_Gift_basket_extra-large_round.jpg?v=1767137682" alt="Extra Large Basket" class="basket-image">
+                    <div class="basket-content">
+                        <div class="basket-header">
+                            <div class="basket-name">Extra Large</div>
+                            <div class="basket-price">$179</div>
+                        </div>
+                        <div class="serving-pill">Serves 25-35 people</div>
+                        <div class="basket-details">99 pieces · 18" Round Basket</div>
+                    </div>
+                </div>
+                
+                <div class="basket-card" onclick="selectBasket('giant', 'Giant', 126, 209)">
+                    <img src="https://cdn.shopify.com/s/files/1/0559/8498/0141/files/20_giant_oval.jpg?v=1766872024" alt="Giant Basket" class="basket-image">
+                    <div class="basket-content">
+                        <div class="basket-header">
+                            <div class="basket-name">Giant</div>
+                            <div class="basket-price">$209</div>
+                        </div>
+                        <div class="serving-pill">Serves 35-45 people</div>
+                        <div class="basket-details">126 pieces · 20" Oval Basket</div>
+                    </div>
+                </div>
+                
+                <div class="basket-card" onclick="selectBasket('jumbo-rectangle', 'Jumbo Rectangle', 165, 269)">
+                    <img src="https://cdn.shopify.com/s/files/1/0559/8498/0141/files/jumbo_rectangle_ddc54088-9e1e-43e5-bd29-1ad797a4e939.png?v=1767201040" alt="Jumbo Rectangle Basket" class="basket-image">
+                    <div class="basket-content">
+                        <div class="basket-header">
+                            <div class="basket-name">Jumbo Rectangle</div>
+                            <div class="basket-price">$269</div>
+                        </div>
+                        <div class="serving-pill">Serves 45-60 people</div>
+                        <div class="basket-details">165 pieces · 24.5" Rectangle</div>
+                    </div>
+                </div>
+                
+                <div class="basket-card" onclick="selectBasket('penultimate', 'Penultimate', 330, 399)">
+                    <img src="https://cdn.shopify.com/s/files/1/0559/8498/0141/files/Penultimate_Basket_Sweet_Tooth.png?v=1767201842" alt="Penultimate Basket" class="basket-image">
+                    <div class="basket-content">
+                        <div class="basket-header">
+                            <div class="basket-name">Penultimate</div>
+                            <div class="basket-price">$399</div>
+                        </div>
+                        <div class="serving-pill">Serves 60-80 people</div>
+                        <div class="basket-details">330 pieces · 24" Round Basket</div>
+                    </div>
+                </div>
+                
+                <div class="basket-card" onclick="selectBasket('supreme', 'Supreme', 400, 629)">
+                    <img src="https://cdn.shopify.com/s/files/1/0559/8498/0141/files/supreme_basket_sweet_tooth.png?v=1767202083" alt="Supreme Basket" class="basket-image">
+                    <div class="basket-content">
+                        <div class="basket-header">
+                            <div class="basket-name">Supreme</div>
+                            <div class="basket-price">$629</div>
+                        </div>
+                        <div class="serving-pill">Serves 80-100 people</div>
+                        <div class="basket-details">400 pieces · 30" Round Basket</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="goBack()">← Back</button>
+            </div>
+        </div>
+        
+        <!-- STEP 3: Premium Add-Ons -->
+        <div id="step-upsells" class="section">
+            <h2>Make it Extra Special</h2>
+            <p class="subtitle">Add premium treats to wow your recipient</p>
+            
+            <div class="upsells-section">
+                <h3>Premium Add-Ons</h3>
+                <p>Elevate your gift with these delicious extras</p>
+                
+                <div class="upsell-item">
+                    <div class="upsell-info">
+                        <div class="upsell-emoji">🍪</div>
+                        <div class="upsell-details">
+                            <h4>Gourmet Cookies (6-pack)</h4>
+                            <p>Fresh baked • Choose your flavor *</p>
+                            <div class="flavor-options">
+                                <button class="flavor-pill" onclick="selectCookieFlavor('choc-chip')">Chocolate Chip</button>
+                                <button class="flavor-pill" onclick="selectCookieFlavor('white-choc')">White Choc Macadamia</button>
+                                <button class="flavor-pill" onclick="selectCookieFlavor('oatmeal')">Oatmeal Raisin</button>
+                                <button class="flavor-pill" onclick="selectCookieFlavor('mixed')">Mixed</button>
+                            </div>
+                            <div id="cookie-selection-msg" class="selection-msg"></div>
+                        </div>
+                    </div>
+                    <div class="upsell-price">$15</div>
+                    <div class="quantity-controls">
+                        <button class="qty-btn" onclick="adjustQty('cookies', -1, 15)">−</button>
+                        <div class="qty-display" id="qty-cookies">0</div>
+                        <button class="qty-btn" onclick="adjustQty('cookies', 1, 15)">+</button>
+                    </div>
+                </div>
+                
+                <div class="upsell-item">
+                    <div class="upsell-info">
+                        <img src="https://cdn.shopify.com/s/files/1/0559/8498/0141/files/brownie_emoji.png?v=1767202531" alt="Brownies" class="upsell-img">
+                        <div class="upsell-details">
+                            <h4>Chocolate Chip Brownies (6-pack)</h4>
+                            <p>Rich and decadent • Fresh baked *</p>
+                        </div>
+                    </div>
+                    <div class="upsell-price">$15</div>
+                    <div class="quantity-controls">
+                        <button class="qty-btn" onclick="adjustQty('brownies', -1, 15)">−</button>
+                        <div class="qty-display" id="qty-brownies">0</div>
+                        <button class="qty-btn" onclick="adjustQty('brownies', 1, 15)">+</button>
+                    </div>
+                </div>
+                
+                <div class="upsell-item">
+                    <div class="upsell-info">
+                        <img src="https://cdn.shopify.com/s/files/1/0559/8498/0141/files/pecan_praline_emoji.png?v=1767202448" alt="Pralines" class="upsell-img">
+                        <div class="upsell-details">
+                            <h4>Pecan Pralines (6-pack)</h4>
+                            <p>Southern classic • Buttery and sweet *</p>
+                        </div>
+                    </div>
+                    <div class="upsell-price">$18</div>
+                    <div class="quantity-controls">
+                        <button class="qty-btn" onclick="adjustQty('pralines', -1, 18)">−</button>
+                        <div class="qty-display" id="qty-pralines">0</div>
+                        <button class="qty-btn" onclick="adjustQty('pralines', 1, 18)">+</button>
+                    </div>
+                </div>
+                
+                <div class="upsell-item">
+                    <div class="upsell-info">
+                        <img src="https://cdn.shopify.com/s/files/1/0559/8498/0141/files/Truffles_Emoji.png?v=1767203109" alt="Truffles" class="upsell-img">
+                        <div class="upsell-details">
+                            <h4>Assorted Truffles (6-pack)</h4>
+                            <p>Handcrafted chocolate truffles • Chef's selection</p>
+                        </div>
+                    </div>
+                    <div class="upsell-price">$15</div>
+                    <div class="quantity-controls">
+                        <button class="qty-btn" onclick="adjustQty('truffles', -1, 15)">−</button>
+                        <div class="qty-display" id="qty-truffles">0</div>
+                        <button class="qty-btn" onclick="adjustQty('truffles', 1, 15)">+</button>
+                    </div>
+                </div>
+                
+                <div class="upsell-item">
+                    <div class="upsell-info">
+                        <img src="https://cdn.shopify.com/s/files/1/0559/8498/0141/files/Chocolate_dipped_marshmallow_sticks.png?v=1767296185" alt="Marshmallow" class="upsell-img">
+                        <div class="upsell-details">
+                            <h4>Marshmallow Stick</h4>
+                            <p>Chocolate-dipped marshmallow on a stick</p>
+                        </div>
+                    </div>
+                    <div class="upsell-price">$7</div>
+                    <div class="quantity-controls">
+                        <button class="qty-btn" onclick="adjustQty('marshmallow', -1, 7)">−</button>
+                        <div class="qty-display" id="qty-marshmallow">0</div>
+                        <button class="qty-btn" onclick="adjustQty('marshmallow', 1, 7)">+</button>
+                    </div>
+                </div>
+                
+                <div class="upsell-item">
+                    <div class="upsell-info">
+                        <img src="https://cdn.shopify.com/s/files/1/0559/8498/0141/files/muchogustomunch.png?v=1767305228" alt="Mucho Gusto" class="upsell-img">
+                        <div class="upsell-details">
+                            <h4>Mucho Gusto Munch</h4>
+                            <p>Chocolatey popcorn and pretzels with caramel crunch</p>
+                        </div>
+                    </div>
+                    <div class="upsell-price">$12</div>
+                    <div class="quantity-controls">
+                        <button class="qty-btn" onclick="adjustQty('mucho-gusto', -1, 12)">−</button>
+                        <div class="qty-display" id="qty-mucho-gusto">0</div>
+                        <button class="qty-btn" onclick="adjustQty('mucho-gusto', 1, 12)">+</button>
+                    </div>
+                </div>
+                
+                <div class="upsell-item">
+                    <div class="upsell-info">
+                        <div class="upsell-emoji">🍪</div>
+                        <div class="upsell-details">
+                            <h4>Gluten Free Chocolate Dipped Oreos (6-pack)</h4>
+                            <p>Chocolate-dipped • Gluten free</p>
+                        </div>
+                    </div>
+                    <div class="upsell-price">$18</div>
+                    <div class="quantity-controls">
+                        <button class="qty-btn" onclick="adjustQty('gf-oreos', -1, 18)">−</button>
+                        <div class="qty-display" id="qty-gf-oreos">0</div>
+                        <button class="qty-btn" onclick="adjustQty('gf-oreos', 1, 18)">+</button>
+                    </div>
+                </div>
+                
+                <div class="upsell-item">
+                    <div class="upsell-info">
+                        <div class="upsell-emoji">🍪</div>
+                        <div class="upsell-details">
+                            <h4>Vegan Chocolate Dipped Oreos (6-pack)</h4>
+                            <p>Chocolate-dipped • Vegan/Parve</p>
+                        </div>
+                    </div>
+                    <div class="upsell-price">$18</div>
+                    <div class="quantity-controls">
+                        <button class="qty-btn" onclick="adjustQty('vegan-oreos', -1, 18)">−</button>
+                        <div class="qty-display" id="qty-vegan-oreos">0</div>
+                        <button class="qty-btn" onclick="adjustQty('vegan-oreos', 1, 18)">+</button>
+                    </div>
+                </div>
+                
+                <p class="dairy-note">* Dairy products only</p>
+            </div>
+            
+            <div class="plaque-section">
+                <h3>🎨 Add a Chocolate Plaque (+$8)</h3>
+                <p>Personalize your gift with a custom chocolate message</p>
+                
+                <div class="plaque-options">
+                    <button class="plaque-option" onclick="selectPlaqueMessage('Happy Birthday')">Happy Birthday</button>
+                    <button class="plaque-option" onclick="selectPlaqueMessage('Congratulations')">Congratulations</button>
+                    <button class="plaque-option" onclick="selectPlaqueMessage('Thank You')">Thank You</button>
+                    <button class="plaque-option" onclick="selectPlaqueMessage('Get Well')">Get Well</button>
+                    <button class="plaque-option" onclick="selectPlaqueMessage('Baby')">Baby</button>
+                    <button class="plaque-option" onclick="selectPlaqueMessage('Anniversary')">Anniversary</button>
+                    <button class="plaque-option" onclick="selectPlaqueMessage('Home')">Home 🏡</button>
+                </div>
+                
+                <h4>📝 Special Instructions or Allergies</h4>
+                <p class="instructions-note">Let us know about any dietary restrictions, allergies, or special requests</p>
+                <textarea id="special-instructions" placeholder="Enter any special instructions, allergies, or requests here..."></textarea>
+            </div>
+            
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="goBack()">← Back</button>
+            </div>
+            
+            <div class="total-box">
+                <h3>Your Order Total</h3>
+                <div class="total-price" id="totalPrice">$89</div>
+                <button class="btn btn-primary btn-large" onclick="addToCart()">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+const PRODUCT_MAPPING = {
+  "extra-large|Anniversary": 46567894515967,
+  "extra-large|Baby": 46567882326271,
+  "extra-large|Birthday": 46567366656255,
+  "extra-large|Congratulations": 46567896514815,
+  "extra-large|Generic": 46564308746495,
+  "extra-large|Get Well": 46567364395263,
+  "extra-large|Graduation": 46567889469695,
+  "extra-large|Housewarming": 46567891927295,
+  "extra-large|Just Because": 46567325565183,
+  "extra-large|Sympathy": 46567321469183,
+  "extra-large|Teacher Appreciation": 46845884465407,
+  "extra-large|Thank You": 46567369048319,
+  "giant|Anniversary": 46567916634367,
+  "giant|Baby": 46567906705663,
+  "giant|Birthday": 46567933149439,
+  "giant|Congratulations": 46567918436607,
+  "giant|Generic": 46564308353279,
+  "giant|Get Well": 46567920304383,
+  "giant|Graduation": 46567912505599,
+  "giant|Housewarming": 46567915061503,
+  "giant|Just Because": 46567935672575,
+  "giant|Sympathy": 46567372357887,
+  "giant|Teacher Appreciation": 46845883482367,
+  "giant|Thank You": 46567927873791,
+  "jumbo-rectangle|Anniversary": 46567952875775,
+  "jumbo-rectangle|Baby": 46567941046527,
+  "jumbo-rectangle|Birthday": 46567964967167,
+  "jumbo-rectangle|Congratulations": 46567955169535,
+  "jumbo-rectangle|Generic": 47958457811199,
+  "jumbo-rectangle|Get Well": 46567959232767,
+  "jumbo-rectangle|Graduation": 46567947796735,
+  "jumbo-rectangle|Housewarming": 46567950549247,
+  "jumbo-rectangle|Just Because": 46567327924479,
+  "jumbo-rectangle|Sympathy": 46567961067775,
+  "jumbo-rectangle|Teacher Appreciation": 46845876961535,
+  "jumbo-rectangle|Thank You": 46567962902783,
+  "large-oval|Anniversary": 46567870398719,
+  "large-oval|Baby": 46567353745663,
+  "large-oval|Birthday": 46567358464255,
+  "large-oval|College": 46742680273151,
+  "large-oval|Congratulations": 46567873741055,
+  "large-oval|Generic": 46567294271743,
+  "large-oval|Get Well": 46567356104959,
+  "large-oval|Graduation": 46567818821887,
+  "large-oval|Housewarming": 46567865319679,
+  "large-oval|Just Because": 46567323500799,
+  "large-oval|Sympathy": 46567306395903,
+  "large-oval|Teacher Appreciation": 46845874569471,
+  "large-oval|Thank You": 46567347290367,
+  "medium-round|Anniversary": 46567277166847,
+  "medium-round|Baby": 46567781957887,
+  "medium-round|Birthday": 46567477281023,
+  "medium-round|Congratulations": 46567794344191,
+  "medium-round|Get Well": 46567795392767,
+  "medium-round|Graduation": 46567789658367,
+  "medium-round|Housewarming": 46567791296767,
+  "medium-round|Just Because": 46567313735935,
+  "medium-round|Sympathy": 46567796605183,
+  "medium-round|Teacher Appreciation": 46845873815807,
+  "medium-round|Thank You": 46567350993151
+};
+
+let selectedOccasion = '';
+let basketData = { key: '', name: '', capacity: 0, price: 0 };
+let upsellQuantities = {};
+let selectedCookieFlavor = null;
+let selectedPlaque = false;
+let plaqueMessage = '';
+
+function getVariantId(sizeKey, occasion) {
+    let key = sizeKey + '|' + occasion;
+    if (PRODUCT_MAPPING[key]) return PRODUCT_MAPPING[key];
+    key = sizeKey + '|Generic';
+    if (PRODUCT_MAPPING[key]) return PRODUCT_MAPPING[key];
+    key = sizeKey + '|Just Because';
+    return PRODUCT_MAPPING[key] || null;
+}
+
+function showStep(stepId) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.getElementById(stepId).classList.add('active');
+    window.scrollTo(0, 0);
+}
+
+function selectOccasion(occasion) {
+    selectedOccasion = occasion;
+    showStep('step-size');
+}
+
+function selectBasket(key, name, capacity, price) {
+    basketData = { key, name, capacity, price };
+    showStep('step-upsells');
+    updateTotalPrice();
+}
+
+function selectCookieFlavor(flavor) {
+    document.querySelectorAll('.flavor-pill').forEach(btn => btn.classList.remove('selected'));
+    event.target.classList.add('selected');
+    const names = {'choc-chip':'Chocolate Chip','white-choc':'White Choc Macadamia','oatmeal':'Oatmeal Raisin','mixed':'Mixed'};
+    document.getElementById('cookie-selection-msg').textContent = '✓ ' + names[flavor] + ' selected';
+    selectedCookieFlavor = flavor;
+}
+
+function selectPlaqueMessage(message) {
+    document.querySelectorAll('.plaque-option').forEach(btn => btn.classList.remove('selected'));
+    event.target.classList.add('selected');
+    selectedPlaque = true;
+    plaqueMessage = message;
+    updateTotalPrice();
+}
+
+function adjustQty(itemId, change, price) {
+    if (!upsellQuantities[itemId]) upsellQuantities[itemId] = { qty: 0, price: price };
+    upsellQuantities[itemId].qty = Math.max(0, upsellQuantities[itemId].qty + change);
+    document.getElementById('qty-' + itemId).textContent = upsellQuantities[itemId].qty;
+    updateTotalPrice();
+}
+
+function updateTotalPrice() {
+    let total = basketData.price;
+    for (let id in upsellQuantities) total += upsellQuantities[id].qty * upsellQuantities[id].price;
+    if (selectedPlaque) total += 8;
+    document.getElementById('totalPrice').textContent = '$' + total;
+}
+
+function goBack() {
+    const current = document.querySelector('.section.active').id;
+    if (current === 'step-size') showStep('step-occasions');
+    else if (current === 'step-upsells') showStep('step-size');
+}
+
+function addToCart() {
+    const variantId = getVariantId(basketData.key, selectedOccasion);
+    if (!variantId) {
+        alert('Sorry, this combination is not available.');
+        return;
+    }
+    
+    let props = { 'Occasion': selectedOccasion, 'Size': basketData.name };
+    const instructions = document.getElementById('special-instructions').value;
+    if (instructions) props['Special Instructions'] = instructions;
+    if (selectedPlaque && plaqueMessage) props['Chocolate Plaque'] = plaqueMessage;
+    if (selectedCookieFlavor && upsellQuantities['cookies']?.qty > 0) props['Cookie Flavor'] = selectedCookieFlavor;
+    
+    fetch('/cart/add.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ items: [{ id: variantId, quantity: 1, properties: props }] })
+    })
+    .then(r => r.json())
+    .then(() => window.location.href = '/cart')
+    .catch(() => alert('Error adding to cart. Please try again.'));
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const params = new URLSearchParams(window.location.search);
+    const occ = params.get('occasion');
+    if (occ) selectOccasion(occ);
+});
+</script>

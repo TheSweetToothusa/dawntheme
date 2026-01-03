@@ -1,0 +1,528 @@
+/* ============================================
+   THE SWEET TOOTH - BASKET BUILDER STYLES
+   ============================================ */
+
+.st-builder-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.st-builder-container .section {
+    display: none;
+}
+
+.st-builder-container .section.active {
+    display: block;
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.st-builder-container h2 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #111111;
+}
+
+.st-builder-container .subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #6b7280;
+    margin-bottom: 40px;
+}
+
+/* Occasions Grid */
+.occasion-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.occasion-card {
+    background: white;
+    border: 3px solid #e5e7eb;
+    border-radius: 20px;
+    padding: 30px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.occasion-card:hover {
+    border-color: var(--st-pink, #F06292);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(240, 98, 146, 0.15);
+}
+
+.occasion-card .icon {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+}
+
+.occasion-card h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #111111;
+    margin: 0;
+}
+
+/* Basket Grid */
+.basket-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.basket-card {
+    background: white;
+    border: 3px solid #e5e7eb;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.basket-card:hover {
+    border-color: var(--st-pink, #F06292);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(240, 98, 146, 0.15);
+}
+
+.popular-badge-overlay {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: var(--st-pink, #F06292);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    z-index: 10;
+}
+
+.basket-image {
+    width: 100%;
+    height: 260px;
+    object-fit: contain;
+    display: block;
+    background: #fafafa;
+    padding: 20px;
+}
+
+.basket-content {
+    padding: 20px;
+}
+
+.basket-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.basket-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #111111;
+}
+
+.basket-price {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #111111;
+    white-space: nowrap;
+}
+
+.serving-pill {
+    display: inline-block;
+    background: var(--st-pink-light, #FCE4EC);
+    color: #B25372;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.basket-details {
+    font-size: 0.9rem;
+    color: #666666;
+}
+
+/* Info Banner */
+.info-banner {
+    background: #fef3c7;
+    border-left: 4px solid #f59e0b;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin: 0 auto 40px;
+    max-width: 800px;
+}
+
+.info-banner p {
+    margin: 0;
+    color: #92400e;
+    font-size: 0.95rem;
+}
+
+/* Upsells Section */
+.upsells-section {
+    max-width: 900px;
+    margin: 0 auto 40px;
+}
+
+.upsells-section h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #111111;
+}
+
+.upsells-section > p {
+    color: #6b7280;
+    margin-bottom: 30px;
+    font-size: 1.05rem;
+}
+
+.upsell-item {
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.upsell-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex: 1;
+    min-width: 250px;
+}
+
+.upsell-emoji {
+    font-size: 2.5rem;
+    min-width: 50px;
+    text-align: center;
+}
+
+.upsell-img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+.upsell-details h4 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #111111;
+    margin: 0 0 4px 0;
+}
+
+.upsell-details p {
+    color: #6b7280;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.upsell-price {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #111111;
+    min-width: 60px;
+    text-align: center;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.qty-btn {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #111111;
+    border-radius: 50%;
+    background: white;
+    font-size: 1.3rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.qty-btn:hover {
+    background: var(--st-pink, #F06292);
+    border-color: var(--st-pink, #F06292);
+    color: white;
+}
+
+.qty-display {
+    font-size: 1.2rem;
+    font-weight: 600;
+    min-width: 30px;
+    text-align: center;
+}
+
+/* Flavor Pills */
+.flavor-options {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.flavor-pill {
+    padding: 8px 16px;
+    border: 2px solid #e5e7eb;
+    border-radius: 25px;
+    background: white;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-family: inherit;
+    transition: all 0.2s;
+}
+
+.flavor-pill:hover {
+    border-color: var(--st-pink, #F06292);
+}
+
+.flavor-pill.selected {
+    background: var(--st-pink, #F06292);
+    border-color: var(--st-pink, #F06292);
+    color: white;
+    font-weight: 600;
+}
+
+.selection-msg {
+    margin-top: 8px;
+    font-size: 0.85rem;
+    color: #10b981;
+    font-style: italic;
+}
+
+.dairy-note {
+    font-size: 0.85rem;
+    color: #6b7280;
+    margin-top: 20px;
+    font-style: italic;
+}
+
+/* Plaque Section */
+.plaque-section {
+    background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+    border-radius: 20px;
+    padding: 40px;
+    margin: 40px auto;
+    max-width: 900px;
+}
+
+.plaque-section h3 {
+    font-size: 1.5rem;
+    margin: 0 0 10px 0;
+    color: #111111;
+}
+
+.plaque-section > p {
+    color: #6b7280;
+    margin-bottom: 25px;
+}
+
+.plaque-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.plaque-option {
+    background: white;
+    border: 3px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 15px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+.plaque-option:hover {
+    border-color: #f59e0b;
+}
+
+.plaque-option.selected {
+    border-color: #f59e0b;
+    background: #fef3c7;
+}
+
+.plaque-section h4 {
+    font-size: 1.2rem;
+    margin: 30px 0 15px 0;
+    color: #111111;
+}
+
+.instructions-note {
+    color: #6b7280;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+.plaque-section textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 15px;
+    border: 3px solid #e5e7eb;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-family: inherit;
+    resize: vertical;
+}
+
+.plaque-section textarea:focus {
+    border-color: var(--st-pink, #F06292);
+    outline: none;
+}
+
+/* Buttons */
+.btn {
+    padding: 15px 40px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+.btn-primary {
+    background: var(--st-pink, #F06292);
+    color: white;
+    box-shadow: 0 4px 15px rgba(240, 98, 146, 0.3);
+}
+
+.btn-primary:hover {
+    background: #E91E63;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(240, 98, 146, 0.4);
+}
+
+.btn-secondary {
+    background: white;
+    color: #111111;
+    border: 2px solid #111111;
+}
+
+.btn-secondary:hover {
+    background: #f9fafb;
+}
+
+.btn-large {
+    padding: 18px 60px;
+    font-size: 1.2rem;
+}
+
+.nav-buttons {
+    text-align: center;
+    margin: 30px 0;
+}
+
+/* Total Box */
+.total-box {
+    background: linear-gradient(135deg, var(--st-pink-light, #FCE4EC) 0%, #fff0f5 100%);
+    border: 3px solid var(--st-pink, #F06292);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    max-width: 500px;
+    margin: 40px auto;
+}
+
+.total-box h3 {
+    font-size: 1.2rem;
+    color: #B25372;
+    margin: 0 0 10px 0;
+}
+
+.total-price {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #111111;
+    margin-bottom: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .st-builder-container {
+        padding: 20px 15px;
+    }
+    
+    .occasion-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    
+    .occasion-card {
+        padding: 20px 15px;
+    }
+    
+    .occasion-card .icon {
+        font-size: 2rem;
+    }
+    
+    .basket-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .basket-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .upsell-item {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 15px;
+    }
+    
+    .upsell-info {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .plaque-section {
+        padding: 25px 20px;
+    }
+    
+    .plaque-options {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .total-price {
+        font-size: 2.5rem;
+    }
+    
+    .btn-large {
+        width: 100%;
+        padding: 16px 30px;
+    }
+}
