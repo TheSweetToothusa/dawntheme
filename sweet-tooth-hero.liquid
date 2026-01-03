@@ -1,0 +1,162 @@
+{% comment %}
+  ============================================
+  THE SWEET TOOTH - HERO SECTION
+  ============================================
+  
+  How to install:
+  1. Go to Shopify Admin → Online Store → Themes
+  2. Click "..." on your Dawn draft → Edit code
+  3. In /sections folder, click "Add a new section"
+  4. Name it: sweet-tooth-hero.liquid
+  5. Paste this entire file
+  6. Go to Theme Customizer → Add section → Sweet Tooth Hero
+  
+============================================
+{% endcomment %}
+
+<section class="st-hero" id="hero">
+  {%- if section.settings.background_type == 'video' and section.settings.background_video != blank -%}
+    <video 
+      class="st-hero__background st-hero__background--video"
+      autoplay 
+      muted 
+      loop 
+      playsinline
+      poster="{{ section.settings.background_image | image_url: width: 1920 }}"
+    >
+      <source src="{{ section.settings.background_video }}" type="video/mp4">
+    </video>
+  {%- elsif section.settings.background_image != blank -%}
+    <img 
+      class="st-hero__background"
+      src="{{ section.settings.background_image | image_url: width: 1920 }}"
+      alt="{{ section.settings.background_image.alt | default: 'The Sweet Tooth - Premium Chocolate Gifts' }}"
+      loading="eager"
+      fetchpriority="high"
+    >
+  {%- else -%}
+    {%- comment -%} Fallback gradient background {%- endcomment -%}
+    <div class="st-hero__background" style="background: linear-gradient(135deg, #FCE4EC 0%, #F8BBD9 100%);"></div>
+  {%- endif -%}
+  
+  <div class="st-hero__overlay"></div>
+  
+  <div class="st-hero__content">
+    <h1 class="st-hero__headline">
+      {{ section.settings.headline | default: "The Gift They'll Actually Keep." }}
+    </h1>
+    
+    <p class="st-hero__subheadline">
+      {{ section.settings.subheadline | default: "Premium, KM Kosher certified chocolate gifts from North Miami Beach. Est. 1979." }}
+    </p>
+    
+    <div class="st-hero__ctas">
+      {%- if section.settings.primary_cta_text != blank -%}
+        <a 
+          href="{{ section.settings.primary_cta_link | default: '/pages/build-a-basket' }}" 
+          class="st-btn-primary"
+        >
+          {{ section.settings.primary_cta_text }}
+        </a>
+      {%- endif -%}
+      
+      {%- if section.settings.secondary_cta_text != blank -%}
+        <a 
+          href="{{ section.settings.secondary_cta_link | default: '/collections/viral-edit' }}" 
+          class="st-btn-secondary"
+        >
+          {{ section.settings.secondary_cta_text }}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Sweet Tooth Hero",
+  "tag": "section",
+  "class": "st-hero-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "select",
+      "id": "background_type",
+      "label": "Background Type",
+      "options": [
+        { "value": "image", "label": "Image" },
+        { "value": "video", "label": "Video" }
+      ],
+      "default": "image"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image",
+      "info": "Recommended: 1920x1080 or larger. Used as video poster if video is selected."
+    },
+    {
+      "type": "url",
+      "id": "background_video",
+      "label": "Background Video URL",
+      "info": "Direct link to MP4 video file. Upload to Shopify Files first, then paste URL here."
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "The Gift They'll Actually Keep."
+    },
+    {
+      "type": "textarea",
+      "id": "subheadline",
+      "label": "Subheadline",
+      "default": "Premium, KM Kosher certified chocolate gifts from North Miami Beach. Est. 1979."
+    },
+    {
+      "type": "header",
+      "content": "Primary CTA (Pink Button)"
+    },
+    {
+      "type": "text",
+      "id": "primary_cta_text",
+      "label": "Button Text",
+      "default": "Start Customizing"
+    },
+    {
+      "type": "url",
+      "id": "primary_cta_link",
+      "label": "Button Link",
+      "default": "/pages/build-a-basket"
+    },
+    {
+      "type": "header",
+      "content": "Secondary CTA (Outline Button)"
+    },
+    {
+      "type": "text",
+      "id": "secondary_cta_text",
+      "label": "Button Text",
+      "default": "Shop The Viral Edit"
+    },
+    {
+      "type": "url",
+      "id": "secondary_cta_link",
+      "label": "Button Link",
+      "default": "/collections/viral-edit"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sweet Tooth Hero"
+    }
+  ]
+}
+{% endschema %}

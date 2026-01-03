@@ -1,0 +1,301 @@
+{% comment %}
+  ============================================
+  THE SWEET TOOTH - VIRAL LAB
+  ============================================
+  
+  "As Seen on Your Feed" - Dubai Chocolate, trending items
+  
+============================================
+{% endcomment %}
+
+<section class="st-viral">
+  <div class="st-viral__container page-width">
+    <div class="st-viral__header">
+      <h2 class="st-viral__headline">{{ section.settings.headline }}</h2>
+      <p class="st-viral__subheadline">{{ section.settings.subheadline }}</p>
+    </div>
+    
+    <div class="st-viral__grid">
+      {%- for block in section.blocks -%}
+        <div class="st-viral__card" {{ block.shopify_attributes }}>
+          {%- if block.settings.product != blank -%}
+            {%- assign product = block.settings.product -%}
+            <a href="{{ product.url }}" class="st-viral__card-link">
+              <div class="st-viral__image-wrapper">
+                {%- if product.featured_image != blank -%}
+                  <img 
+                    src="{{ product.featured_image | image_url: width: 600 }}"
+                    alt="{{ product.featured_image.alt | default: product.title }}"
+                    class="st-viral__image"
+                    loading="lazy"
+                  >
+                {%- else -%}
+                  <div class="st-viral__placeholder">{{ product.title | slice: 0 }}</div>
+                {%- endif -%}
+                
+                {%- if block.settings.badge != blank -%}
+                  <span class="st-viral__badge">{{ block.settings.badge }}</span>
+                {%- endif -%}
+              </div>
+              
+              <div class="st-viral__details">
+                <h3 class="st-viral__title">{{ product.title }}</h3>
+                <p class="st-viral__price">{{ product.price | money }}</p>
+                <span class="st-viral__cta">{{ block.settings.cta_text | default: 'Claim Yours' }}</span>
+              </div>
+            </a>
+          {%- else -%}
+            <div class="st-viral__card-empty">
+              <p>Select a product</p>
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+    
+    {%- if section.settings.view_all_link != blank -%}
+      <div class="st-viral__footer">
+        <a href="{{ section.settings.view_all_link }}" class="st-btn-secondary">
+          {{ section.settings.view_all_text | default: 'View The Viral Edit' }}
+        </a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+<style>
+  .st-viral {
+    padding: var(--st-section-spacing, 80px) 20px;
+    background-color: var(--st-white, #FFFFFF);
+  }
+  
+  .st-viral__container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .st-viral__header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  
+  .st-viral__headline {
+    font-family: var(--st-font-display, system-ui);
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 600;
+    color: var(--st-charcoal, #1D1D1F);
+    margin: 0 0 12px 0;
+  }
+  
+  .st-viral__subheadline {
+    font-family: var(--st-font-body, system-ui);
+    font-size: 18px;
+    color: var(--st-text-secondary, #6E6E73);
+    margin: 0;
+  }
+  
+  .st-viral__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  
+  .st-viral__card {
+    background: var(--st-white, #FFFFFF);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    transition: all var(--st-transition-medium, 300ms ease);
+  }
+  
+  .st-viral__card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--st-shadow-medium, 0 8px 30px rgba(0, 0, 0, 0.12));
+  }
+  
+  .st-viral__card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .st-viral__image-wrapper {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background: var(--st-cool-grey, #F5F5F7);
+  }
+  
+  .st-viral__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--st-transition-medium, 300ms ease);
+  }
+  
+  .st-viral__card:hover .st-viral__image {
+    transform: scale(1.05);
+  }
+  
+  .st-viral__badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: var(--st-pink, #F06292);
+    color: var(--st-white, #FFFFFF);
+    padding: 6px 12px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .st-viral__details {
+    padding: 20px;
+  }
+  
+  .st-viral__title {
+    font-family: var(--st-font-body, system-ui);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--st-charcoal, #1D1D1F);
+    margin: 0 0 8px 0;
+    line-height: 1.3;
+  }
+  
+  .st-viral__price {
+    font-size: 16px;
+    color: var(--st-text-secondary, #6E6E73);
+    margin: 0 0 12px 0;
+  }
+  
+  .st-viral__cta {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--st-pink, #F06292);
+    opacity: 0;
+    transform: translateY(8px);
+    transition: all var(--st-transition-medium, 300ms ease);
+  }
+  
+  .st-viral__card:hover .st-viral__cta {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .st-viral__footer {
+    text-align: center;
+    margin-top: 40px;
+  }
+  
+  .st-viral__card-empty {
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--st-cool-grey, #F5F5F7);
+    color: var(--st-text-secondary, #6E6E73);
+  }
+  
+  .st-viral__placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--st-pink-light, #FCE4EC);
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--st-pink, #F06292);
+  }
+  
+  @media (max-width: 768px) {
+    .st-viral__grid {
+      grid-template-columns: 1fr;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    
+    .st-viral__cta {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .st-viral__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Sweet Tooth Viral Lab",
+  "tag": "section",
+  "class": "st-viral-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "As Seen on Your Feed"
+    },
+    {
+      "type": "text",
+      "id": "subheadline",
+      "label": "Subheadline",
+      "default": "Dubai Chocolate, Oreo trays, pretzels — the stuff people screenshot."
+    },
+    {
+      "type": "url",
+      "id": "view_all_link",
+      "label": "View All Link"
+    },
+    {
+      "type": "text",
+      "id": "view_all_text",
+      "label": "View All Text",
+      "default": "View The Viral Edit"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "text",
+          "id": "badge",
+          "label": "Badge Text",
+          "info": "Optional. E.g., 'Trending', 'Viral', 'New'"
+        },
+        {
+          "type": "text",
+          "id": "cta_text",
+          "label": "CTA Text",
+          "default": "Claim Yours"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sweet Tooth Viral Lab",
+      "blocks": [
+        { "type": "product" },
+        { "type": "product" },
+        { "type": "product" }
+      ]
+    }
+  ]
+}
+{% endschema %}

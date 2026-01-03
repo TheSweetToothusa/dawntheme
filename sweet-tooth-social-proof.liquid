@@ -1,0 +1,132 @@
+{% comment %}
+  ============================================
+  THE SWEET TOOTH - SOCIAL PROOF BAR
+  ============================================
+  
+  How to install:
+  1. Go to Shopify Admin → Online Store → Themes
+  2. Click "..." on your Dawn draft → Edit code
+  3. In /sections folder, click "Add a new section"
+  4. Name it: sweet-tooth-social-proof.liquid
+  5. Paste this entire file
+  6. Go to Theme Customizer → Add section → Sweet Tooth Social Proof
+  
+============================================
+{% endcomment %}
+
+<section class="st-social-proof{% if section.settings.style == 'ticker' %} st-social-proof--ticker{% endif %}">
+  <div class="st-social-proof__inner">
+    {%- for block in section.blocks -%}
+      <div class="st-social-proof__item" {{ block.shopify_attributes }}>
+        {%- if block.settings.bold_text != blank -%}
+          <strong>{{ block.settings.bold_text }}</strong>
+        {%- endif -%}
+        {{ block.settings.regular_text }}
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+<style>
+  {%- if section.settings.style == 'ticker' -%}
+  /* Animated ticker styles */
+  .st-social-proof--ticker .st-social-proof__inner {
+    display: flex;
+    gap: 48px;
+    animation: ticker-scroll 30s linear infinite;
+    width: max-content;
+  }
+  
+  @keyframes ticker-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  
+  .st-social-proof--ticker:hover .st-social-proof__inner {
+    animation-play-state: paused;
+  }
+  {%- endif -%}
+</style>
+
+{% schema %}
+{
+  "name": "Sweet Tooth Social Proof",
+  "tag": "section",
+  "class": "st-social-proof-section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "style",
+      "label": "Style",
+      "options": [
+        { "value": "static", "label": "Static (Centered)" },
+        { "value": "ticker", "label": "Animated Ticker (Pink Background)" }
+      ],
+      "default": "static",
+      "info": "Static = grey background, centered. Ticker = pink background, scrolling animation."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "proof_item",
+      "name": "Proof Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "bold_text",
+          "label": "Bold Text (Number/Stat)",
+          "default": "10,000+"
+        },
+        {
+          "type": "text",
+          "id": "regular_text",
+          "label": "Regular Text (Description)",
+          "default": "Orders Delivered"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sweet Tooth Social Proof",
+      "blocks": [
+        {
+          "type": "proof_item",
+          "settings": {
+            "bold_text": "10,000+",
+            "regular_text": "Orders Delivered"
+          }
+        },
+        {
+          "type": "proof_item",
+          "settings": {
+            "bold_text": "1,216",
+            "regular_text": "Five-Star Reviews"
+          }
+        },
+        {
+          "type": "proof_item",
+          "settings": {
+            "bold_text": "",
+            "regular_text": "Best of Aventura 2025"
+          }
+        },
+        {
+          "type": "proof_item",
+          "settings": {
+            "bold_text": "",
+            "regular_text": "KM Kosher Certified"
+          }
+        },
+        {
+          "type": "proof_item",
+          "settings": {
+            "bold_text": "",
+            "regular_text": "Shipping Nationwide"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

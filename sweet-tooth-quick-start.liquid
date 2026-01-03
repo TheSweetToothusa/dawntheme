@@ -1,0 +1,205 @@
+{% comment %}
+  ============================================
+  THE SWEET TOOTH - QUICK-START CARDS
+  ============================================
+  
+  "Shop by Vibe" / "Choose Your Occasion" section
+  
+  How to install:
+  1. Go to Shopify Admin → Online Store → Themes
+  2. Click "..." on your Dawn draft → Edit code
+  3. In /sections folder, click "Add a new section"
+  4. Name it: sweet-tooth-quick-start.liquid
+  5. Paste this entire file
+  6. Go to Theme Customizer → Add section → Sweet Tooth Quick-Start
+  
+============================================
+{% endcomment %}
+
+<section class="st-quick-start">
+  <div class="st-quick-start__container page-width">
+    {%- if section.settings.title != blank -%}
+      <h2 class="st-quick-start__title">{{ section.settings.title }}</h2>
+    {%- endif -%}
+    
+    <div class="st-quick-start__grid">
+      {%- for block in section.blocks -%}
+        <a 
+          href="{{ block.settings.link }}" 
+          class="st-quick-start__card"
+          style="{% if block.settings.bg_color != blank %}background-color: {{ block.settings.bg_color }};{% endif %}"
+          {{ block.shopify_attributes }}
+        >
+          {%- if block.settings.icon != blank -%}
+            <span class="st-quick-start__icon">{{ block.settings.icon }}</span>
+          {%- elsif block.settings.image != blank -%}
+            <img 
+              src="{{ block.settings.image | image_url: width: 100 }}"
+              alt="{{ block.settings.title }}"
+              class="st-quick-start__icon-image"
+              loading="lazy"
+            >
+          {%- endif -%}
+          <h3 class="st-quick-start__card-title">{{ block.settings.title }}</h3>
+          {%- if block.settings.cta_text != blank -%}
+            <span class="st-quick-start__cta">{{ block.settings.cta_text }}</span>
+          {%- endif -%}
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+<style>
+  .st-quick-start__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .st-quick-start__icon-image {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    margin-bottom: 16px;
+  }
+  
+  .st-quick-start__cta {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--st-pink);
+    opacity: 0;
+    transform: translateY(8px);
+    transition: all var(--st-transition-medium);
+  }
+  
+  .st-quick-start__card:hover .st-quick-start__cta {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Vibe-based color variations */
+  .st-quick-start__card--sympathy {
+    background: linear-gradient(135deg, #F5F5F5 0%, #E8E8E8 100%);
+    border-color: #D0D0D0;
+  }
+  
+  .st-quick-start__card--corporate {
+    background: linear-gradient(135deg, #FFFFFF 0%, #F8F8F8 100%);
+    border-color: #D4AF37;
+  }
+  
+  .st-quick-start__card--hype {
+    background: linear-gradient(135deg, #FCE4EC 0%, #F8BBD9 100%);
+    border-color: var(--st-pink);
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Sweet Tooth Quick-Start",
+  "tag": "section",
+  "class": "st-quick-start-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Shop by Intent"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "occasion_card",
+      "name": "Occasion Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Emoji Icon",
+          "default": "??",
+          "info": "Use an emoji like ?? ?? ?? ??"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Custom Icon Image",
+          "info": "Optional. Overrides emoji if provided."
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Card Title",
+          "default": "Birthday"
+        },
+        {
+          "type": "text",
+          "id": "cta_text",
+          "label": "CTA Text (appears on hover)",
+          "default": "Curate This Gift"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Card Link",
+          "default": "/pages/build-a-basket?occasion=birthday"
+        },
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Background Color",
+          "default": "#FFFFFF"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sweet Tooth Quick-Start",
+      "settings": {
+        "title": "Shop by Intent"
+      },
+      "blocks": [
+        {
+          "type": "occasion_card",
+          "settings": {
+            "icon": "??",
+            "title": "Sympathy / Shiva",
+            "cta_text": "Send a Sweet Gesture",
+            "link": "/pages/build-a-basket?occasion=sympathy"
+          }
+        },
+        {
+          "type": "occasion_card",
+          "settings": {
+            "icon": "??",
+            "title": "Corporate / Thank You",
+            "cta_text": "Get a Bulk Quote",
+            "link": "/pages/corporate"
+          }
+        },
+        {
+          "type": "occasion_card",
+          "settings": {
+            "icon": "??",
+            "title": "Dubai / Trending",
+            "cta_text": "Claim Yours",
+            "link": "/collections/viral-edit"
+          }
+        },
+        {
+          "type": "occasion_card",
+          "settings": {
+            "icon": "??",
+            "title": "View All Occasions",
+            "cta_text": "Start Building",
+            "link": "/pages/build-a-basket"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

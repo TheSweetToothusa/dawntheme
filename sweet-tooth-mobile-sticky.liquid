@@ -1,0 +1,64 @@
+{% comment %}
+  ============================================
+  THE SWEET TOOTH - MOBILE STICKY BAR
+  ============================================
+  
+  Always-visible CTA on mobile devices
+  
+  How to install:
+  1. Go to Shopify Admin → Online Store → Themes
+  2. Click "..." on your Dawn draft → Edit code
+  3. In /snippets folder, click "Add a new snippet"
+  4. Name it: sweet-tooth-mobile-sticky.liquid
+  5. Paste this entire file
+  6. In /layout/theme.liquid, add this line before </body>:
+     {% render 'sweet-tooth-mobile-sticky' %}
+  
+============================================
+{% endcomment %}
+
+{%- comment -%} Only show if NOT on cart page or checkout {%- endcomment -%}
+{%- unless template == 'cart' or request.page_type == 'checkout' -%}
+<div class="st-mobile-sticky" id="mobileStickyBar">
+  <a href="/pages/build-a-basket" class="st-mobile-sticky__btn">
+    Build Your Basket →
+  </a>
+</div>
+
+<script>
+  // Optional: Hide sticky bar when scrolled to footer
+  (function() {
+    var stickyBar = document.getElementById('mobileStickyBar');
+    var footer = document.querySelector('footer');
+    
+    if (stickyBar && footer) {
+      window.addEventListener('scroll', function() {
+        var footerRect = footer.getBoundingClientRect();
+        var windowHeight = window.innerHeight;
+        
+        if (footerRect.top < windowHeight) {
+          stickyBar.style.opacity = '0';
+          stickyBar.style.pointerEvents = 'none';
+        } else {
+          stickyBar.style.opacity = '1';
+          stickyBar.style.pointerEvents = 'auto';
+        }
+      });
+    }
+  })();
+</script>
+
+<style>
+  /* Additional mobile sticky styles beyond CSS file */
+  .st-mobile-sticky {
+    transition: opacity 0.3s ease;
+  }
+  
+  /* Adjust padding for pages with sticky bar */
+  @media (max-width: 768px) {
+    .shopify-section:last-of-type {
+      margin-bottom: 80px;
+    }
+  }
+</style>
+{%- endunless -%}

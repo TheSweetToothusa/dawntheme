@@ -1,0 +1,496 @@
+/* ============================================
+   THE SWEET TOOTH - CUSTOM DAWN THEME STYLES
+   ============================================
+   
+   How to install:
+   1. Go to Shopify Admin \u2192 Online Store \u2192 Themes
+   2. Click "..." on your Dawn draft \u2192 Edit code
+   3. In /assets folder, click "Add a new asset"
+   4. Name it: sweet-tooth-custom.css
+   5. Paste this entire file
+   6. In /layout/theme.liquid, add this line before </head>:
+      {{ 'sweet-tooth-custom.css' | asset_url | stylesheet_tag }}
+   
+============================================ */
+
+/* ============================================
+   CSS VARIABLES - BRAND COLORS
+============================================ */
+:root {
+  /* Primary Colors */
+  --st-pink: #F06292;
+  --st-pink-hover: #E91E63;
+  --st-pink-light: #FCE4EC;
+  --st-pink-glow: rgba(240, 98, 146, 0.3);
+  
+  /* Neutral Colors */
+  --st-white: #FFFFFF;
+  --st-off-white: #FAFAFA;
+  --st-cool-grey: #F5F5F7;
+  --st-charcoal: #1D1D1F;
+  --st-text-secondary: #6E6E73;
+  
+  /* Accent Colors */
+  --st-gold: #D4AF37;
+  
+  /* NEVER USE BROWN - This comment is intentional */
+  
+  /* Spacing */
+  --st-section-spacing: 80px;
+  --st-section-spacing-mobile: 48px;
+  
+  /* Typography */
+  --st-font-display: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --st-font-body: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  /* Transitions */
+  --st-transition-fast: 150ms ease;
+  --st-transition-medium: 300ms ease;
+  --st-transition-slow: 500ms ease;
+  
+  /* Shadows */
+  --st-shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --st-shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.12);
+  --st-shadow-pink: 0 4px 20px var(--st-pink-glow);
+}
+
+/* ============================================
+   GLOBAL OVERRIDES - REMOVE BROWN
+============================================ */
+body {
+  font-family: var(--st-font-body);
+  color: var(--st-charcoal);
+  background-color: var(--st-white);
+}
+
+/* Override any brown colors that might sneak in */
+[style*="brown"],
+[style*="#8B4513"],
+[style*="#654321"],
+[style*="#A0522D"],
+[style*="#D2691E"],
+[style*="chocolate"] {
+  color: var(--st-charcoal) !important;
+  background-color: var(--st-pink) !important;
+}
+
+/* ============================================
+   NAVIGATION STYLES
+============================================ */
+
+/* Main header wrapper */
+.header-wrapper {
+  background-color: var(--st-white);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Navigation links */
+.header__menu-item {
+  font-family: var(--st-font-body);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--st-charcoal);
+  text-decoration: none;
+  transition: color var(--st-transition-fast);
+}
+
+.header__menu-item:hover {
+  color: var(--st-pink);
+}
+
+/* "Build a Basket" Primary CTA Button in Nav */
+.nav-cta-primary {
+  background-color: var(--st-pink);
+  color: var(--st-white) !important;
+  padding: 12px 24px;
+  border-radius: 100px;
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  transition: all var(--st-transition-medium);
+  box-shadow: var(--st-shadow-pink);
+}
+
+.nav-cta-primary:hover {
+  background-color: var(--st-pink-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px var(--st-pink-glow);
+}
+
+/* ============================================
+   HERO SECTION
+============================================ */
+.st-hero {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: var(--st-pink-light);
+}
+
+.st-hero__background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.st-hero__background--video {
+  object-fit: cover;
+}
+
+.st-hero__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.3) 100%
+  );
+  z-index: 1;
+}
+
+.st-hero__content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 40px 20px;
+  max-width: 800px;
+}
+
+.st-hero__headline {
+  font-family: var(--st-font-display);
+  font-size: clamp(36px, 6vw, 64px);
+  font-weight: 700;
+  color: var(--st-charcoal);
+  line-height: 1.1;
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+}
+
+.st-hero__subheadline {
+  font-family: var(--st-font-body);
+  font-size: clamp(16px, 2vw, 22px);
+  color: var(--st-text-secondary);
+  line-height: 1.5;
+  margin-bottom: 40px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.st-hero__ctas {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ============================================
+   BUTTONS
+============================================ */
+
+/* Primary Button (Pink) */
+.st-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--st-pink);
+  color: var(--st-white);
+  padding: 16px 32px;
+  border-radius: 100px;
+  font-family: var(--st-font-body);
+  font-size: 17px;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all var(--st-transition-medium);
+  box-shadow: var(--st-shadow-pink);
+  min-width: 200px;
+}
+
+.st-btn-primary:hover {
+  background-color: var(--st-pink-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px var(--st-pink-glow);
+}
+
+/* Secondary Button (Outline) */
+.st-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  color: var(--st-charcoal);
+  padding: 16px 32px;
+  border-radius: 100px;
+  font-family: var(--st-font-body);
+  font-size: 17px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 2px solid var(--st-charcoal);
+  cursor: pointer;
+  transition: all var(--st-transition-medium);
+  min-width: 200px;
+}
+
+.st-btn-secondary:hover {
+  background-color: var(--st-charcoal);
+  color: var(--st-white);
+  transform: translateY(-3px);
+}
+
+/* ============================================
+   SOCIAL PROOF BAR
+============================================ */
+.st-social-proof {
+  background-color: var(--st-cool-grey);
+  padding: 24px 20px;
+  overflow: hidden;
+}
+
+.st-social-proof__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+
+.st-social-proof__item {
+  font-family: var(--st-font-body);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--st-text-secondary);
+  white-space: nowrap;
+}
+
+.st-social-proof__item strong {
+  color: var(--st-charcoal);
+}
+
+/* Animated ticker version */
+.st-social-proof--ticker {
+  background-color: var(--st-pink);
+  padding: 16px 0;
+}
+
+.st-social-proof--ticker .st-social-proof__item {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.st-social-proof--ticker .st-social-proof__item strong {
+  color: var(--st-white);
+}
+
+/* ============================================
+   QUICK-START CARDS (OCCASIONS)
+============================================ */
+.st-quick-start {
+  padding: var(--st-section-spacing) 20px;
+  background-color: var(--st-white);
+}
+
+.st-quick-start__title {
+  font-family: var(--st-font-display);
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 600;
+  color: var(--st-charcoal);
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.st-quick-start__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.st-quick-start__card {
+  background-color: var(--st-white);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+  padding: 32px 24px;
+  text-align: center;
+  text-decoration: none;
+  transition: all var(--st-transition-medium);
+  cursor: pointer;
+}
+
+.st-quick-start__card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--st-shadow-medium);
+  border-color: var(--st-pink);
+}
+
+.st-quick-start__icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.st-quick-start__card-title {
+  font-family: var(--st-font-body);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--st-charcoal);
+  margin: 0;
+}
+
+/* ============================================
+   MOBILE STICKY BAR
+============================================ */
+.st-mobile-sticky {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--st-pink);
+  padding: 16px 20px;
+  z-index: 999;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.st-mobile-sticky__btn {
+  display: block;
+  width: 100%;
+  background-color: var(--st-white);
+  color: var(--st-pink);
+  padding: 16px 24px;
+  border-radius: 100px;
+  font-family: var(--st-font-body);
+  font-size: 17px;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .st-mobile-sticky {
+    display: block;
+  }
+  
+  /* Add padding to body so content isn't hidden behind sticky bar */
+  body {
+    padding-bottom: 80px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+============================================ */
+@media (max-width: 768px) {
+  :root {
+    --st-section-spacing: var(--st-section-spacing-mobile);
+  }
+  
+  .st-hero {
+    min-height: 80vh;
+  }
+  
+  .st-hero__ctas {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .st-btn-primary,
+  .st-btn-secondary {
+    width: 100%;
+    max-width: 320px;
+  }
+  
+  .st-quick-start__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  
+  .st-quick-start__card {
+    padding: 24px 16px;
+  }
+  
+  .st-quick-start__icon {
+    font-size: 36px;
+  }
+  
+  .st-quick-start__card-title {
+    font-size: 16px;
+  }
+  
+  .st-social-proof__inner {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+/* ============================================
+   RESPECTFUL PACKAGING TOGGLE (CART)
+============================================ */
+.st-respectful-packaging {
+  background-color: var(--st-cool-grey);
+  border-radius: 12px;
+  padding: 16px;
+  margin: 16px 0;
+}
+
+.st-respectful-packaging__label {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.st-respectful-packaging__checkbox {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--st-pink);
+  margin-top: 2px;
+}
+
+.st-respectful-packaging__text {
+  font-size: 14px;
+  color: var(--st-text-secondary);
+  line-height: 1.4;
+}
+
+.st-respectful-packaging__text strong {
+  color: var(--st-charcoal);
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* ============================================
+   UTILITY CLASSES
+============================================ */
+.st-text-center { text-align: center; }
+.st-text-pink { color: var(--st-pink); }
+.st-bg-pink { background-color: var(--st-pink); }
+.st-bg-white { background-color: var(--st-white); }
+.st-bg-grey { background-color: var(--st-cool-grey); }
+.st-mt-0 { margin-top: 0; }
+.st-mb-0 { margin-bottom: 0; }
+.st-hidden-mobile { display: block; }
+.st-hidden-desktop { display: none; }
+
+@media (max-width: 768px) {
+  .st-hidden-mobile { display: none; }
+  .st-hidden-desktop { display: block; }
+}

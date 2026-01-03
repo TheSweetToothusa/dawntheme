@@ -1,0 +1,205 @@
+{% comment %}
+  ============================================
+  THE SWEET TOOTH - HERITAGE BLOCK
+  ============================================
+  
+  "46 Years in Miami" trust section
+  
+============================================
+{% endcomment %}
+
+<section class="st-heritage">
+  <div class="st-heritage__container page-width">
+    <div class="st-heritage__content">
+      {%- if section.settings.image != blank -%}
+        <div class="st-heritage__image-wrapper">
+          <img 
+            src="{{ section.settings.image | image_url: width: 600 }}"
+            alt="{{ section.settings.image.alt | default: 'The Sweet Tooth Heritage' }}"
+            class="st-heritage__image"
+            loading="lazy"
+          >
+          <div class="st-heritage__accent"></div>
+        </div>
+      {%- endif -%}
+      
+      <div class="st-heritage__text">
+        <h2 class="st-heritage__headline">{{ section.settings.headline }}</h2>
+        <p class="st-heritage__copy">{{ section.settings.copy }}</p>
+        
+        {%- if section.settings.show_badges -%}
+          <div class="st-heritage__badges">
+            <div class="st-heritage__badge">
+              <span class="st-heritage__badge-number">46</span>
+              <span class="st-heritage__badge-label">Years</span>
+            </div>
+            <div class="st-heritage__badge">
+              <span class="st-heritage__badge-number">10K+</span>
+              <span class="st-heritage__badge-label">Orders</span>
+            </div>
+            <div class="st-heritage__badge">
+              <span class="st-heritage__badge-number">KM</span>
+              <span class="st-heritage__badge-label">Kosher</span>
+            </div>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .st-heritage {
+    padding: var(--st-section-spacing, 80px) 20px;
+    background-color: var(--st-off-white, #FAFAFA);
+  }
+  
+  .st-heritage__container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  
+  .st-heritage__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  
+  .st-heritage__image-wrapper {
+    position: relative;
+  }
+  
+  .st-heritage__image {
+    width: 100%;
+    border-radius: 16px;
+    filter: grayscale(100%);
+    transition: filter 0.5s ease;
+  }
+  
+  .st-heritage__image-wrapper:hover .st-heritage__image {
+    filter: grayscale(0%);
+  }
+  
+  .st-heritage__accent {
+    position: absolute;
+    bottom: -16px;
+    right: -16px;
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(135deg, var(--st-pink, #F06292) 0%, #E91E63 100%);
+    border-radius: 12px;
+    z-index: -1;
+    opacity: 0.8;
+  }
+  
+  .st-heritage__text {
+    padding: 20px 0;
+  }
+  
+  .st-heritage__headline {
+    font-family: var(--st-font-display, system-ui);
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 600;
+    color: var(--st-charcoal, #1D1D1F);
+    line-height: 1.2;
+    margin: 0 0 20px 0;
+  }
+  
+  .st-heritage__copy {
+    font-family: var(--st-font-body, system-ui);
+    font-size: 18px;
+    color: var(--st-text-secondary, #6E6E73);
+    line-height: 1.7;
+    margin: 0 0 32px 0;
+  }
+  
+  .st-heritage__badges {
+    display: flex;
+    gap: 32px;
+  }
+  
+  .st-heritage__badge {
+    text-align: center;
+  }
+  
+  .st-heritage__badge-number {
+    display: block;
+    font-family: var(--st-font-display, system-ui);
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--st-pink, #F06292);
+    line-height: 1;
+  }
+  
+  .st-heritage__badge-label {
+    display: block;
+    font-size: 14px;
+    color: var(--st-text-secondary, #6E6E73);
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  @media (max-width: 768px) {
+    .st-heritage__content {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    
+    .st-heritage__image-wrapper {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    
+    .st-heritage__accent {
+      width: 80px;
+      height: 80px;
+      bottom: -12px;
+      right: -12px;
+    }
+    
+    .st-heritage__badges {
+      justify-content: center;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Sweet Tooth Heritage",
+  "tag": "section",
+  "class": "st-heritage-section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Heritage Image",
+      "info": "Recommended: Photo of founders, store, or team. Will display in black & white with color on hover."
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "North Miami's Sweet Spot Since 1979"
+    },
+    {
+      "type": "textarea",
+      "id": "copy",
+      "label": "Copy",
+      "default": "We've been crafting chocolate gifts for 46 years. Old school standards. New school taste. Every basket is made fresh in our North Miami Beach kitchen with the same care we've had since day one."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_badges",
+      "label": "Show Stat Badges",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sweet Tooth Heritage"
+    }
+  ]
+}
+{% endschema %}
